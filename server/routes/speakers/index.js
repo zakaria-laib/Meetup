@@ -14,10 +14,6 @@ module.exports = (param) => {
         });
     });
 
-    router.get('/:name', (req, res, next) => {
-        return res.render('speakers/detail', {
-            page: req.params.name,
-        });
     router.get('/:name',async (req, res, next) => {  
         try {
             const promises = [];
