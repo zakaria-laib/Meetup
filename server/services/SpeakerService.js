@@ -35,6 +35,28 @@ class SpeakerService {
     if (!data) return [];
     return JSON.parse(data).speakers;
   }
-}
+
+  async getSpeaker(shortname) {
+    const data = await this.getData();
+    const speaker = data.find((speaker) => {
+      return speaker.shortname === shortname;
+    });
+    if(!speaker) return null;
+    return {
+      title : speaker.title,
+      name: speaker.name,
+      shortname: speaker.description,
+    }
+  }
+
+    async getArtworkForSpeaker(shortname){
+      const data = await this.getData();
+      const speaker = data.find((speaker) => {
+      return speaker.shortname === shortname;
+    });
+      if(!speaker || !speaker.artwork) return null;
+      return speaker.artwork;
+    }
+  }
 
 module.exports = SpeakerService;
